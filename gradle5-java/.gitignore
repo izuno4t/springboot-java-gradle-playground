@@ -1,6 +1,8 @@
 HELP.md
 .gradle
 /build/
+/bin/
+/h2db/
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
