@@ -1,2 +1,2 @@
 # gradle-playground
-Gradle でお試ししてみるよう。
+Gradle でお試ししてみる用。
