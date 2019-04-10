@@ -4,8 +4,11 @@ plugins {
 	id 'checkstyle'
 	id  'com.github.spotbugs' version '1.7.1'
 	id 'pmd'
+	id 'project-report'
 	// id 'findbugs' // Java 9以上だと使えなさそう
-	id "gradle.site" version "0.6"
+	// id "gradle.site" version "0.6"
+	// id "com.novoda.static-analysis" version "0.8.1"
+	// id "com.monits.staticCodeAnalysis" version "2.6.10"
 }
 apply plugin: 'io.spring.dependency-management'
 
