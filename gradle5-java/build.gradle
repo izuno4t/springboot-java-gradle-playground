@@ -60,7 +60,7 @@ dependencyManagement {
 }
 
 checkstyle {
-    toolVersion '8.19'
+	toolVersion '8.19'
 	ignoreFailures = true
 	configFile = rootProject.file('config/checkstyle/checkstyle.xml') 
 }
@@ -89,13 +89,14 @@ tasks.withType(com.github.spotbugs.SpotBugsTask) {
   reports.xml.enabled = false
   reports.html.enabled = true
 }
+
+// Java 9 以下
 // findbugs {
 // 	ignoreFailures = true
 // }
-
-tasks.withType(FindBugs) {
-    reports {
-        xml.enabled = false // これを書くとXML出力を止めることができる
-        html.enabled = true
-    }
-} 
+// tasks.withType(FindBugs) {
+//     reports {
+//         xml.enabled = false // これを書くとXML出力を止めることができる
+//         html.enabled = true
+//     }
+// } 
