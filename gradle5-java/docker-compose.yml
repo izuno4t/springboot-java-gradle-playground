@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  db:
+    build: ./docker/mysql
+    container_name: mysql_docker_compose_example
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: example
+      MYSQL_USER: demo
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/conf.d:/etc/mysql/conf.d
+      - ./docker/mysql/log:/var/log/mysql
+      # - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
