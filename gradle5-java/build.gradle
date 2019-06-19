@@ -1,3 +1,10 @@
+buildscript {
+	dependencies {
+		classpath 'com.h2database:h2:1.4.197'
+		classpath 'mysql:mysql-connector-java:8.0.16'
+	}
+}
+
 plugins {
 	id 'org.springframework.boot' version '2.2.0.BUILD-SNAPSHOT'
 	id "org.flywaydb.flyway" version "5.2.4"
@@ -10,6 +17,8 @@ plugins {
 	// id "gradle.site" version "0.6"
 	// id "com.novoda.static-analysis" version "0.8.1"
 	// id "com.monits.staticCodeAnalysis" version "2.6.10"
+	id 'eclipse' // optional (to generate Eclipse project files)
+	id 'idea' // optional (to generate IntelliJ IDEA project files)
 }
 apply plugin: 'io.spring.dependency-management'
 
@@ -38,25 +47,41 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
 	implementation 'org.springframework.boot:spring-boot-starter-cache'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'de.codecentric:spring-boot-admin-starter-server'
+	implementation 'org.apache.commons:commons-lang3:3.9'
 	implementation 'org.flywaydb:flyway-core'
-	implementation 'org.h2.Driver'
-
+	compileOnly 'org.projectlombok:lombok:1.18.8'
 	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	testImplementation 'com.h2database:h2:1.4.199'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+	testImplementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+	testImplementation 'org.junit.jupiter:junit-jupiter-params:5.4.2'
+	testImplementation ('org.springframework.boot:spring-boot-starter-test'){
+		exclude module: 'junit'
+	}
 	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+//	testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.5.0-RC1'
+
 }
 
 dependencyManagement {
 	imports {
 		mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
+	}
+}
+
+test {
+	useJUnitPlatform()
+	testLogging {
+		events "passed", "skipped", "failed"
 	}
 }
 
