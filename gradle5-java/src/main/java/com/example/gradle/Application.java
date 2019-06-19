@@ -1,13 +1,13 @@
-package com.example.gradlejava;
+package com.example.gradle;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GradleJavaApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GradleJavaApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

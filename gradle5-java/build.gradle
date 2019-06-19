@@ -1,5 +1,6 @@
 plugins {
 	id 'org.springframework.boot' version '2.2.0.BUILD-SNAPSHOT'
+	id "org.flywaydb.flyway" version "5.2.4"
 	id 'java'
 	id 'checkstyle'
 	id  'com.github.spotbugs' version '1.7.1'
@@ -14,7 +15,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '12'
+sourceCompatibility = '8'
 
 configurations {
 	compileOnly {
@@ -43,12 +44,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'de.codecentric:spring-boot-admin-starter-server'
 	implementation 'org.flywaydb:flyway-core'
-	implementation 'org.springframework.retry:spring-retry'
-	implementation 'org.springframework.session:spring-session-jdbc'
+	implementation 'org.h2.Driver'
+
 	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
-	// runtimeOnly 'org.postgresql:postgresql'
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	testImplementation 'com.h2database:h2:1.4.199'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 }
@@ -82,6 +83,11 @@ pmd {
 
 spotbugs {
   toolVersion = '4.0.0-beta1'
+}
+
+flyway {
+	url = 'jdbc:h2:file:./target/foobar'
+	user = 'sa'
 }
 
 // To generate an HTML report instead of XML
