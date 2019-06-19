@@ -1,6 +1,7 @@
 HELP.md
 .gradle
 /build/
+/target/
 /bin/
 /h2db/
 !gradle/wrapper/gradle-wrapper.jar
@@ -30,3 +31,4 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+target/
