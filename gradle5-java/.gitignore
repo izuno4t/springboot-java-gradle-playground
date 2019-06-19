@@ -1,6 +1,7 @@
 HELP.md
 .gradle
 /build/
+/out/
 /target/
 /bin/
 /h2db/
