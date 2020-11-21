@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.annotation.Resource;
 
 
-@Disabled
+
 @SpringBootTest
 class PersonRepositoryTest {
 
@@ -27,6 +27,7 @@ class PersonRepositoryTest {
     @AfterEach
     void teardown() { logger.info("HelloTest.teardown"); }
 
+    @Disabled
     @Nested
     @SpringBootTest
     class FindAll {
