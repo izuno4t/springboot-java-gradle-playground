@@ -19,6 +19,7 @@ plugins {
 	// id "com.monits.staticCodeAnalysis" version "2.6.10"
 	id 'eclipse' // optional (to generate Eclipse project files)
 	id 'idea' // optional (to generate IntelliJ IDEA project files)
+	id 'maven'
 }
 apply plugin: 'io.spring.dependency-management'
 

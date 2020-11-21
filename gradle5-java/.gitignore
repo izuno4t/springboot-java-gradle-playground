@@ -5,6 +5,7 @@ HELP.md
 /target/
 /bin/
 /h2db/
+/docker/mysql/data/
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
