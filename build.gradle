@@ -6,26 +6,23 @@ buildscript {
 }
 
 plugins {
-	id 'org.springframework.boot' version '2.2.0.BUILD-SNAPSHOT'
+	id 'org.springframework.boot' version '2.4.0'
 	id "org.flywaydb.flyway" version "5.2.4"
+	id "com.github.spotbugs" version "4.6.0"
 	id 'java'
 	id 'checkstyle'
-	id  'com.github.spotbugs' version '1.7.1'
 	id 'pmd'
 	id 'project-report'
-	// id 'findbugs' // Java 9以上だと使えなさそう
-	// id "gradle.site" version "0.6"
-	// id "com.novoda.static-analysis" version "0.8.1"
-	// id "com.monits.staticCodeAnalysis" version "2.6.10"
-	id 'eclipse' // optional (to generate Eclipse project files)
-	id 'idea' // optional (to generate IntelliJ IDEA project files)
+	id 'eclipse'
+	id 'idea'
 	id 'maven'
 }
 apply plugin: 'io.spring.dependency-management'
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '8'
+targetCompatibility = '11'
+sourceCompatibility = '11'
 
 configurations {
 	compileOnly {
@@ -35,12 +32,7 @@ configurations {
 
 repositories {
 	mavenCentral()
-	maven { url 'https://repo.spring.io/snapshot' }
 	maven { url 'https://repo.spring.io/milestone' }
-}
-
-ext {
-	set('springBootAdminVersion', '2.1.3')
 }
 
 dependencies {
@@ -69,13 +61,11 @@ dependencies {
 	}
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
-//	testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.5.0-RC1'
-
 }
 
 dependencyManagement {
 	imports {
-		mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
+		mavenBom "de.codecentric:spring-boot-admin-dependencies:2.3.1"
 	}
 }
 
@@ -108,7 +98,7 @@ pmd {
 }
 
 spotbugs {
-  toolVersion = '4.0.0-beta1'
+	toolVersion = '4.1.4'
 }
 
 flyway {
@@ -116,19 +106,3 @@ flyway {
 	user = 'sa'
 }
 
-// To generate an HTML report instead of XML
-tasks.withType(com.github.spotbugs.SpotBugsTask) {
-  reports.xml.enabled = false
-  reports.html.enabled = true
-}
-
-// Java 9 以下
-// findbugs {
-// 	ignoreFailures = true
-// }
-// tasks.withType(FindBugs) {
-//     reports {
-//         xml.enabled = false // これを書くとXML出力を止めることができる
-//         html.enabled = true
-//     }
-// } 

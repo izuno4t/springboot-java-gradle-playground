@@ -1,6 +1,5 @@
-package com.example.gradle.repository;
+package com.example.repository;
 
-import com.example.gradle.entity.Person;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.jupiter.api.AfterEach;
@@ -10,13 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.annotation.Resource;
-
-import java.util.List;
 
 
 @ExtendWith(SpringExtension.class)
