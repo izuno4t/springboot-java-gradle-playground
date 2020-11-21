@@ -1,5 +1,6 @@
 package com.example.repository;
 
+import com.example.entity.Person;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.jupiter.api.AfterEach;
@@ -15,7 +16,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import javax.annotation.Resource;
 
 
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
 class PersonRepositoryTest {
 
