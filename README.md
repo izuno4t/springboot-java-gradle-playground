@@ -1,4 +1,12 @@
-# gradle5 のサンプルプロジェクト
+# Gradle のサンプルプロジェクト
+
+## 構成
+
+- SpringBoot
+- Java11
+- Gradle6
+- Flyway
+
 
 以下のプロジェクトに関する設定を
 
