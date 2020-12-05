@@ -10,6 +10,7 @@ plugins {
     id "org.flywaydb.flyway" version "5.2.4"
     id "com.github.spotbugs" version "4.6.0"
     id 'java'
+    id 'jacoco'
     id 'checkstyle'
     id 'pmd'
     id 'project-report'
@@ -64,13 +65,64 @@ dependencyManagement {
     }
 }
 
+jacoco {
+    toolVersion = "0.8.6"
+}
+
+jacocoTestReport {
+    sourceSets sourceSets.main
+    reports {
+        xml.enabled true
+        html.enabled true
+        csv.enabled false
+    }
+}
+
 test {
     useJUnitPlatform()
     testLogging {
         events "passed", "skipped", "failed"
     }
+    finalizedBy jacocoTestReport
 }
 
+
+// test only classes with @IntegrationTest
+task jacocoIntegrationTestReport(type: JacocoReport) {
+    executionData file("build/jacoco/integrationTest.exec")
+    sourceSets sourceSets.main
+    reports {
+        xml.enabled true
+        html.enabled false
+        csv.enabled false
+    }
+}
+task integrationTest(type: Test) {
+    useJUnitPlatform {
+        includeTags "integrationTest"
+    }
+    finalizedBy jacocoIntegrationTestReport
+}
+
+// test only classes with @UnitTest
+task jacocoUnitTestReport(type: JacocoReport) {
+    executionData file("build/jacoco/unitTest.exec")
+    sourceSets sourceSets.main
+    reports {
+        xml.enabled true
+        html.enabled false
+        csv.enabled false
+    }
+}
+task unitTest(type: Test) {
+    useJUnitPlatform {
+        includeTags "unitTest"
+    }
+    finalizedBy jacocoUnitTestReport
+}
+
+
+// 静的解析
 checkstyle {
     toolVersion '8.19'
     ignoreFailures = true
