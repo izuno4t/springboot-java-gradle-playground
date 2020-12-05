@@ -1,21 +1,21 @@
 buildscript {
-	dependencies {
-		classpath 'com.h2database:h2:1.4.197'
-		classpath 'mysql:mysql-connector-java:8.0.16'
-	}
+    dependencies {
+        classpath 'com.h2database:h2:1.4.197'
+        classpath 'mysql:mysql-connector-java:8.0.16'
+    }
 }
 
 plugins {
-	id 'org.springframework.boot' version '2.4.0'
-	id "org.flywaydb.flyway" version "5.2.4"
-	id "com.github.spotbugs" version "4.6.0"
-	id 'java'
-	id 'checkstyle'
-	id 'pmd'
-	id 'project-report'
-	id 'eclipse'
-	id 'idea'
-	id 'maven'
+    id 'org.springframework.boot' version '2.4.0'
+    id "org.flywaydb.flyway" version "5.2.4"
+    id "com.github.spotbugs" version "4.6.0"
+    id 'java'
+    id 'checkstyle'
+    id 'pmd'
+    id 'project-report'
+    id 'eclipse'
+    id 'idea'
+    id 'maven'
 }
 apply plugin: 'io.spring.dependency-management'
 
@@ -25,61 +25,61 @@ targetCompatibility = '11'
 sourceCompatibility = '11'
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
-	mavenCentral()
-	maven { url 'https://repo.spring.io/milestone' }
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.boot:spring-boot-starter-aop'
-	implementation 'org.springframework.boot:spring-boot-starter-cache'
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'de.codecentric:spring-boot-admin-starter-server'
-	implementation 'org.apache.commons:commons-lang3:3.9'
-	implementation 'org.flywaydb:flyway-core'
-	compileOnly 'org.projectlombok:lombok:1.18.8'
-	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'mysql:mysql-connector-java'
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	annotationProcessor 'org.projectlombok:lombok:1.18.8'
-	testImplementation("org.springframework.boot:spring-boot-starter-test") {
-		exclude(group: 'org.junit.vintage')
-	}
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'de.codecentric:spring-boot-admin-starter-server'
+    implementation 'org.apache.commons:commons-lang3:3.9'
+    implementation 'org.flywaydb:flyway-core'
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    runtimeOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'mysql:mysql-connector-java'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude(group: 'org.junit.vintage')
+    }
 }
 
 dependencyManagement {
-	imports {
-		mavenBom "de.codecentric:spring-boot-admin-dependencies:2.3.1"
-	}
+    imports {
+        mavenBom "de.codecentric:spring-boot-admin-dependencies:2.3.1"
+    }
 }
 
 test {
-	useJUnitPlatform()
-	testLogging {
-		events "passed", "skipped", "failed"
-	}
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
 checkstyle {
-	toolVersion '8.19'
-	ignoreFailures = true
-	configFile = rootProject.file('config/checkstyle/google_checks.xml')
+    toolVersion '8.19'
+    ignoreFailures = true
+    configFile = rootProject.file('config/checkstyle/google_checks.xml')
 }
 
 pmd {
     toolVersion '6.13.0'
-	ignoreFailures = true
+    ignoreFailures = true
     ruleSets = [
             "category/java/bestpractices.xml",
             "category/java/codestyle.xml",
@@ -93,11 +93,11 @@ pmd {
 }
 
 spotbugs {
-	toolVersion = '4.1.4'
+    toolVersion = '4.1.4'
 }
 
 flyway {
-	url = 'jdbc:h2:file:./target/foobar'
-	user = 'sa'
+    url = 'jdbc:h2:file:./target/foobar'
+    user = 'sa'
 }
 
