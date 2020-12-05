@@ -1,1 +1,1 @@
-ALTER TABLE people MODIFY gender varchar(20);
+ALTER TABLE people MODIFY gender varchar (20);

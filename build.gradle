@@ -124,7 +124,7 @@ task unitTest(type: Test) {
 
 // 静的解析
 checkstyle {
-    toolVersion '8.19'
+    toolVersion '8.38'
     ignoreFailures = true
     configFile = rootProject.file('config/checkstyle/google_checks.xml')
 }
@@ -145,7 +145,7 @@ pmd {
 }
 
 spotbugs {
-    toolVersion = '4.1.4'
+    toolVersion = '4.2.0'
 }
 
 flyway {
