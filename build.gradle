@@ -1,14 +1,13 @@
 buildscript {
     dependencies {
-        classpath 'com.h2database:h2:1.4.197'
-        classpath 'mysql:mysql-connector-java:8.0.16'
+        classpath 'com.h2database:h2:2.1.214'
+        classpath 'mysql:mysql-connector-java:8.0.31'
     }
 }
 
 plugins {
-    id 'org.springframework.boot' version '2.4.0'
-    id "org.flywaydb.flyway" version "5.2.4"
-    id "com.github.spotbugs" version "4.6.0"
+    id 'org.springframework.boot' version '2.7.5'
+    id "org.flywaydb.flyway" version "9.6.0"
     id 'java'
     id 'jacoco'
     id 'checkstyle'
@@ -16,7 +15,8 @@ plugins {
     id 'project-report'
     id 'eclipse'
     id 'idea'
-    id 'maven'
+    id 'maven-publish'
+    id "com.github.spotbugs" version "5.0.13"
 }
 apply plugin: 'io.spring.dependency-management'
 
@@ -145,11 +145,10 @@ pmd {
 }
 
 spotbugs {
-    toolVersion = '4.2.0'
+    toolVersion = '4.7.1'
 }
 
 flyway {
     url = 'jdbc:h2:file:./target/foobar'
     user = 'sa'
 }
-
